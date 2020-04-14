@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Runtime.Serialization;
+
+namespace CharactersCrud.Elements
+{
+
+    [Serializable]
+    public class Armour
+    {
+        public string helmet { get; set; }
+        public string chainMail { get; set; }
+
+        public Armour(string Helmet, string ChainMail)
+        {
+            helmet = Helmet;
+            chainMail = ChainMail;
+        }
+
+    }
+
+    public enum WeaponType
+    { 
+        Sword,
+        Knife,
+        Axe,
+        Bow
+    }
+
+    [Serializable]
+    class Warrior : Character
+    {
+        public WeaponType Weapon { get; set; }
+
+       
+        public Warrior(WeaponType weapon,string name, int age, int level, int health,Race race) : base(name, age, level, health,race)
+        {
+            Weapon = weapon;
+           
+        }
+
+    }
+
+    [Serializable]
+    class Berserker: Warrior
+    {
+        public string BeastType { get; set; }
+        public Armour armour { get; set; }
+        public Berserker( string beastType, Armour somearmour, WeaponType weapon, string name, int age, int level, int health,Race race) :base(weapon,name, age, level, health,race)
+        {
+            BeastType = beastType;
+            armour = somearmour;
+
+        }
+
+    }
+
+}

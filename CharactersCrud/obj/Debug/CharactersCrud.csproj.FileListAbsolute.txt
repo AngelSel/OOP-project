@@ -1,0 +1,21 @@
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.exe.config
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.exe
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.pdb
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csprojAssemblyReference.cache
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.Form1.resources
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.Properties.Resources.resources
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csproj.GenerateResource.cache
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.exe
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\lab2\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.pdb
+D:\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.exe.config
+D:\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.exe
+D:\Characters\CharactersCrud\CharactersCrud\bin\Debug\CharactersCrud.pdb
+D:\Characters\CharactersCrud\CharactersCrud\bin\Debug\Newtonsoft.Json.dll
+D:\Characters\CharactersCrud\CharactersCrud\bin\Debug\Newtonsoft.Json.xml
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csprojAssemblyReference.cache
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.Form1.resources
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.Properties.Resources.resources
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csproj.GenerateResource.cache
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csproj.CopyComplete
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.exe
+D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.pdb
