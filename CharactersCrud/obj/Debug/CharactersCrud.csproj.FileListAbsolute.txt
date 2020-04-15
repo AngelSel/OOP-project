@@ -19,3 +19,16 @@ D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csproj.Gene
 D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.csproj.CopyComplete
 D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.exe
 D:\Characters\CharactersCrud\CharactersCrud\obj\Debug\CharactersCrud.pdb
+J:\OOP-project\OOP-project\CharactersCrud\bin\Debug\CharactersCrud.exe.config
+J:\OOP-project\OOP-project\CharactersCrud\bin\Debug\CharactersCrud.exe
+J:\OOP-project\OOP-project\CharactersCrud\bin\Debug\CharactersCrud.pdb
+J:\OOP-project\OOP-project\CharactersCrud\bin\Debug\Newtonsoft.Json.dll
+J:\OOP-project\OOP-project\CharactersCrud\bin\Debug\Newtonsoft.Json.xml
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csprojAssemblyReference.cache
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.Form1.resources
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.Properties.Resources.resources
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csproj.GenerateResource.cache
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csproj.CoreCompileInputs.cache
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csproj.CopyComplete
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.exe
+J:\OOP-project\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.pdb

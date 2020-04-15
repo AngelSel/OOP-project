@@ -41,7 +41,7 @@ namespace CharactersCrud
                 foreach (var el in Enum.GetValues(typeof(Character.TCategorys)))
                 {
                     if (type.Name.Equals(el.ToString()))
-                        comboBox1.Items.Add(type);
+                        comboBox1.Items.Add(type.Name);
                 }
             }
 
@@ -62,6 +62,7 @@ namespace CharactersCrud
             some.Items.Add(lvi);
         }
 
+
         //обновление листа
         private void Update(List<Character> objList)
         {
@@ -79,8 +80,8 @@ namespace CharactersCrud
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Type type = this.comboBox1.SelectedItem as Type;
-            CreateObject(type);
+            var Name = Type.GetType("CharactersCrud.Elements."+this.comboBox1.SelectedItem.ToString() , false,true);
+            CreateObject(Name);
 
         }
 
