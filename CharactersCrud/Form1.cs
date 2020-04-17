@@ -155,26 +155,7 @@ namespace CharactersCrud
                 //если вложенный объект
                 else if(prmInfo[i].ParameterType.IsClass && !(prmInfo[i].ParameterType.Equals(typeof(string))))
                 {
-                    /*  lb[i] = new Label
-                      {
-                          Top = compDelta + 5,
-                          Text = prmInfo[i].Name
-                      };
-                      form.Controls.Add(cm[boxCOunter]);
-                      form.Controls.Add(lb[i]);
 
-                      Button btnObject = new Button
-                      {
-                          Text = "Armour",
-                          Left = deltaleft,
-                          Top = compDelta,
-                          Width = tbWidth,
-                          Height = 20
-                      };
-
-                      form.Controls.Add(btnObject);
-                      CreateObject(prmInfo[i].ParameterType);
-                      compDelta += tbHeight;*/
                     CreateObject(prmInfo[i].ParameterType);
                 }
                 
