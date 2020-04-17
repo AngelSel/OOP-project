@@ -22,6 +22,12 @@ namespace CharactersCrud.Elements
 
     }
 
+    public enum BeastTypeBerserker
+    { 
+        Wolf,
+        Bear,
+        Lion
+    }
     public enum WeaponType
     { 
         Sword,
@@ -31,7 +37,7 @@ namespace CharactersCrud.Elements
     }
 
     [Serializable]
-    class Warrior : Character
+    public class Warrior : Character
     {
         public WeaponType Weapon { get; set; }
 
@@ -45,11 +51,12 @@ namespace CharactersCrud.Elements
     }
 
     [Serializable]
-    class Berserker: Warrior
+    public class Berserker: Warrior
     {
-        public string BeastType { get; set; }
         public Armour armour { get; set; }
-        public Berserker( string beastType, Armour somearmour, WeaponType weapon, string name, int age, int level, int health,Race race) :base(weapon,name, age, level, health,race)
+        public BeastTypeBerserker BeastType { get; set; }
+
+        public Berserker(Armour somearmour, BeastTypeBerserker beastType,WeaponType weapon, string name, int age, int level, int health,Race race) :base(weapon,name, age, level, health,race)
         {
             BeastType = beastType;
             armour = somearmour;

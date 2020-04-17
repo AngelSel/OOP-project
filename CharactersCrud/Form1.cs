@@ -27,7 +27,7 @@ namespace CharactersCrud
 
         public List<Character> objList = new List<Character>();
         public List<Armour> armourList = new List<Armour>();
-        public List<object> arList = new List<object>();
+        private List<object> arList = new List<object>();
 
         internal List<Armour> ArmourList { get => armourList; set => armourList = value; }
 
@@ -41,7 +41,7 @@ namespace CharactersCrud
                 foreach (var el in Enum.GetValues(typeof(Character.TCategorys)))
                 {
                     if (type.Name.Equals(el.ToString()))
-                        comboBox1.Items.Add(type);
+                        comboBox1.Items.Add(type.Name);
                 }
             }
 
@@ -50,7 +50,7 @@ namespace CharactersCrud
 
 
         //добавление новой строки в лист
-        public static void AddLine(ListView some)
+        private static void AddLine(ListView some)
         {
             ListViewItem lvi = new ListViewItem();
             ListViewItem.ListViewSubItem lvSub1 = new ListViewItem.ListViewSubItem();
@@ -61,6 +61,7 @@ namespace CharactersCrud
             lvi.SubItems.Add(lvSub3);
             some.Items.Add(lvi);
         }
+
 
         //обновление листа
         private void Update(List<Character> objList)
@@ -79,10 +80,11 @@ namespace CharactersCrud
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Type type = this.comboBox1.SelectedItem as Type;
-            CreateObject(type);
+            var Name = Type.GetType("CharactersCrud.Elements."+this.comboBox1.SelectedItem.ToString() , false,true);
+            CreateObject(Name);
 
         }
+
 
             
         //полное создание объекта
@@ -91,7 +93,7 @@ namespace CharactersCrud
             ConstructorInfo[] csInfo = type.GetConstructors();
             ParameterInfo[] prmInfo = csInfo[0].GetParameters();
 
-            int i = 0;
+           int i = 0;
             Form form = new Form
             {
                 Width = 300,
@@ -99,10 +101,11 @@ namespace CharactersCrud
                 FormBorderStyle = FormBorderStyle.FixedSingle
             };
 
-            int deltaleft = 100;
             int compDelta = 10;
+            int deltaleft = 100;        
             int tbWidth = 130;
             int tbHeight = 30;
+
 
             int j = 0;
             for (i = 0; i < prmInfo.Length; i++)
@@ -121,7 +124,7 @@ namespace CharactersCrud
             //генерация формы создания
             for (i = 0; i < prmInfo.Length; i++)
             {
-
+                //если enum
                 if (prmInfo[i].ParameterType.IsEnum)
                 {
                     cm[boxCOunter] = new ComboBox
@@ -148,28 +151,31 @@ namespace CharactersCrud
                     boxCOunter++;
                     compDelta += tbHeight;
                 }
+
+                //если вложенный объект
                 else if(prmInfo[i].ParameterType.IsClass && !(prmInfo[i].ParameterType.Equals(typeof(string))))
                 {
-                    lb[i] = new Label
-                    {
-                        Top = compDelta + 5,
-                        Text = prmInfo[i].Name
-                    };
-                    form.Controls.Add(cm[boxCOunter]);
-                    form.Controls.Add(lb[i]);
+                    /*  lb[i] = new Label
+                      {
+                          Top = compDelta + 5,
+                          Text = prmInfo[i].Name
+                      };
+                      form.Controls.Add(cm[boxCOunter]);
+                      form.Controls.Add(lb[i]);
 
-                    Button btnObject = new Button
-                    {
-                        Text = "Armour",
-                        Left = deltaleft,
-                        Top = compDelta,
-                        Width = tbWidth,
-                        Height = 20
-                    };
+                      Button btnObject = new Button
+                      {
+                          Text = "Armour",
+                          Left = deltaleft,
+                          Top = compDelta,
+                          Width = tbWidth,
+                          Height = 20
+                      };
 
-                    form.Controls.Add(btnObject);
+                      form.Controls.Add(btnObject);
+                      CreateObject(prmInfo[i].ParameterType);
+                      compDelta += tbHeight;*/
                     CreateObject(prmInfo[i].ParameterType);
-                    compDelta += tbHeight;
                 }
                 
                 else
@@ -293,11 +299,7 @@ namespace CharactersCrud
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Error);
                 }
-               
             }
-
-
-
         }
 
         private void DeleteModalClick(object sender, EventArgs e)
@@ -384,13 +386,13 @@ namespace CharactersCrud
                 }
                 else if (publicProps[i].PropertyType.IsClass && !(publicProps[i].PropertyType.Equals(typeof(string))))
                 {
-                    lb[i] = new Label
+                   /* lb[i] = new Label
                     {
                         Top = compDelta + 5,
                         Text = publicProps[i].Name
                     };
                     form.Controls.Add(lb[i]);
-                    compDelta += tbHeight;
+                    compDelta += tbHeight;*/
                     Object inObj = publicProps[i].GetValue(obj);
                     arList.Add(inObj);
                     EditObj(inObj);

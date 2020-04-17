@@ -25,7 +25,7 @@ namespace CharactersCrud.Elements
     }
 
     [Serializable]
-   class Magician : Character
+   public class Magician : Character
         
     {
        
@@ -43,15 +43,25 @@ namespace CharactersCrud.Elements
 
     }
 
+    public enum SummCreatures
+    {
+        Demon,
+        Djin,
+        Faery,
+        Kraken,
+        Rats
+
+    }
+
 
     [Serializable]
-    class Summoner : Magician
+    public class Summoner : Magician
     {
-        public Summoner(MagicT magicType, MagicA magicArtefacts,string name, int age, int level, int health, Race race ) : base(magicType, magicArtefacts,name, age, level, health,race)
+        public SummCreatures Creatures { get; set; }
+        public Summoner(SummCreatures creatures,MagicT magicType, MagicA magicArtefacts,string name, int age, int level, int health, Race race ) : base(magicType, magicArtefacts,name, age, level, health,race)
         {
-         
+            Creatures = creatures;
         
-
         }
 
        

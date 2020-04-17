@@ -36,6 +36,8 @@ namespace CharactersCrud
         }
     }
 
+
+
     public class JSONSerialization : ISerializations
     {
         public void Serialization(string fileName, List<Character> characterList)
@@ -64,6 +66,9 @@ namespace CharactersCrud
         }
 
     }
+
+
+
 
     public class MySerialization: ISerializations
     {
@@ -132,8 +137,7 @@ namespace CharactersCrud
 
 
         }
-
-        
+      
         private static Type FieldType(ref string str, int ind)
         {
             Type objtype = Type.GetType(str.Substring(0, ind), false, true);

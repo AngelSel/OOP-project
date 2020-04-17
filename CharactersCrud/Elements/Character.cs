@@ -12,7 +12,10 @@ namespace CharactersCrud.Elements
         Human,
         Elf,
         Dwarf,
-        Druid
+        Druid,
+        Troll,
+        Vampire,
+        Werewolf
     }
 
 

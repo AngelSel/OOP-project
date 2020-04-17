@@ -7,26 +7,24 @@ using System.Runtime.Serialization;
 
 namespace CharactersCrud.Elements
 {
+    public enum AbilityPriest
+    {
+        Heal,
+        Shield,
+        Exorcism,
+        MindControl
+    }
+
     [Serializable]
     class Priest:Character
     {
-        public string Shield { get; set; }
-        public Priest(string shield,string name, int age, int level, int health, Race race) : base(name, age, level, health,race)
+        public AbilityPriest Ability { get; set; }
+        public Priest(AbilityPriest ability,string name, int age, int level, int health, Race race) : base(name, age, level, health,race)
         {
-            Shield = shield;          
+            Ability = ability;            
 
         }
 
     }
 
-
-    [Serializable]
-    class Exorcist:Priest
-    {
-        public Exorcist( string shield,string name, int age, int level, int health,Race race) : base(shield,name, age, level, health,race)
-        {
-           
-        }
-
-    }
 }
