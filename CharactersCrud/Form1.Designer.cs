@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,14 +43,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Menu;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -62,12 +67,39 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 415);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(589, 55);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(163, 24);
+            this.comboBox2.TabIndex = 8;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(408, 55);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(157, 27);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Save";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(408, 22);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(157, 27);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Load";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(49, 55);
+            this.comboBox1.Location = new System.Drawing.Point(33, 59);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 24);
@@ -93,27 +125,27 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Имя";
+            this.columnHeader1.Text = "Name";
             this.columnHeader1.Width = 129;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Раса";
+            this.columnHeader2.Text = "Race";
             this.columnHeader2.Width = 126;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Класс";
+            this.columnHeader3.Text = "Class";
             this.columnHeader3.Width = 125;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Уровень";
+            this.columnHeader4.Text = "Level";
             this.columnHeader4.Width = 156;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(261, 55);
+            this.button3.Location = new System.Drawing.Point(220, 55);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 30);
@@ -124,7 +156,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(261, 19);
+            this.button2.Location = new System.Drawing.Point(220, 21);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(157, 28);
@@ -135,7 +167,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(49, 21);
+            this.button1.Location = new System.Drawing.Point(33, 21);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 28);
@@ -148,25 +180,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button4
+            // label1
             // 
-            this.button4.Location = new System.Drawing.Point(516, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(157, 27);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Load";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(516, 52);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(157, 27);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Save";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(595, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Choose Plugin";
             // 
             // Form1
             // 
@@ -180,6 +201,7 @@
             this.Name = "Form1";
             this.Text = "CharactersCRUD";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -200,6 +222,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

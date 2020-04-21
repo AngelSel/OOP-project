@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using CharactersCrud.Elements;
+using System.IO;
+using System.Collections;
 
 namespace CharactersCrud
 {
@@ -20,7 +22,8 @@ namespace CharactersCrud
             InitializeComponent();
             InitCombo();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
+            string path = Directory.GetCurrentDirectory() + "\\CustomPlugins";
+            GetPlugins(path);
             saveFileDialog1.Filter = "Binary(bin)|*.bin|Json(json)|*.json|Text(txt)|*.txt";
             openFileDialog1.Filter = "Binary(bin)|*.bin|Json(json)|*.json|Text(txt)|*.txt";
         }
@@ -32,7 +35,7 @@ namespace CharactersCrud
         internal List<Armour> ArmourList { get => armourList; set => armourList = value; }
 
 
-        //инициализация ComboBox
+        //инициализация ComboBox 
         private void InitCombo()
         {
             Assembly asm = Assembly.Load("CharactersCrud");
@@ -84,7 +87,6 @@ namespace CharactersCrud
             CreateObject(Name);
 
         }
-
 
             
         //полное создание объекта
@@ -258,7 +260,6 @@ namespace CharactersCrud
 
                 if (valid)
                 {
-
                     obj = Activator.CreateInstance(type, prms);
                     if ((obj).GetType().Equals(typeof(Armour)))
                     {
@@ -268,7 +269,6 @@ namespace CharactersCrud
                     {
                         this.objList.Add((Character)obj);
                         Update(objList);
-
                     }
                         
                     form.Hide();
@@ -367,21 +367,12 @@ namespace CharactersCrud
                 }
                 else if (publicProps[i].PropertyType.IsClass && !(publicProps[i].PropertyType.Equals(typeof(string))))
                 {
-                   /* lb[i] = new Label
-                    {
-                        Top = compDelta + 5,
-                        Text = publicProps[i].Name
-                    };
-                    form.Controls.Add(lb[i]);
-                    compDelta += tbHeight;*/
+
                     Object inObj = publicProps[i].GetValue(obj);
                     arList.Add(inObj);
                     EditObj(inObj);
 
-
                 }
-
-
                 else
                 {
 
@@ -465,7 +456,6 @@ namespace CharactersCrud
                             }
                             else
                                 prm = null;
-
                         }
 
                         publicProps[i].SetValue(obj, prm);
@@ -486,14 +476,12 @@ namespace CharactersCrud
                         arList.Add(obj);
                         form.Hide();
                         form.Dispose();
-
                     }
                     else
                     {
                         form.Hide();
                         form.Dispose();
                         Update(objList);
-
                     }
 
                 }
@@ -511,11 +499,9 @@ namespace CharactersCrud
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             int a = listView1.SelectedIndices[0];
             objList.RemoveAt(a);
-            Update(objList);
-            
+            Update(objList);           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -523,22 +509,103 @@ namespace CharactersCrud
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string fileName = openFileDialog1.FileName;
-            objList = serializers[openFileDialog1.FilterIndex - 1].Deserializations(fileName);
+            byte[] serialized = null;
+
+            using (FileStream fs = new FileStream(fileName, FileMode.Open))
+            {
+                serialized = new byte[(int)fs.Length];
+                fs.Read(serialized, 0, serialized.Length);
+            }
+            string pluginName = PluginController.GetFileProperty(fileName);
+            PluginController current = null;
+            int res = PluginController.IsPluginExist(pluginName, ref current);
+            byte[] data = null;
+           
+            switch (res)
+            {
+                case -1:
+                    MessageBox.Show("There is no such plugin");
+                    return;
+                case 0:
+                    data = serialized;
+                    break;
+                case 1:
+                    data = current.ActivatePlugin(current, serialized, false);
+                    break;
+
+            }
+
+            objList = serializers[openFileDialog1.FilterIndex - 1].Deserializations(data);
             Update(objList);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            int r = comboBox2.SelectedIndex;
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string fileName = saveFileDialog1.FileName;
-            serializers[(saveFileDialog1.FilterIndex) - 1 ].Serialization(fileName,objList);
-            
+            byte[] stringSerialized = serializers[(saveFileDialog1.FilterIndex) - 1 ].Serialization(objList);
+            if (comboBox2.SelectedItem != null)
+            {
+                PluginController curr = comboBox2.SelectedItem as PluginController;
+                byte[] data = curr.ActivatePlugin(curr, stringSerialized, true);
+                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    fs.Write(data, 0, data.Length);
+                }
+                PluginController.SetFileProperty(fileName, curr.Filename);
+            }
+            else
+            {
+                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    fs.Write(stringSerialized, 0,stringSerialized.Length);
+
+                }
+                PluginController.SetFileProperty(fileName,"");
+
+            }          
+
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        //автоматическая загрузка плагинов
+        private void GetPlugins(string Path)
         {
+            if (!Directory.Exists(Path))
+            {
+                return;
+            }
 
+            PluginController curr = comboBox2.SelectedItem as PluginController;
+            comboBox2.BeginUpdate();
+            comboBox2.Items.Clear();
+
+            foreach (string f in Directory.GetFiles(Path))
+            {
+                FileInfo fi = new FileInfo(f);
+
+                if (fi.Extension.Equals(".dll"))
+                {
+                    comboBox2.Items.Add(new PluginController(f));
+                }
+            }
+            comboBox2.EndUpdate();
+            if (curr != null)
+            {
+                PluginController test;
+                for (int i = 0; i < comboBox2.Items.Count; ++i)
+                {
+                    test = comboBox2.Items[i] as PluginController;
+                    if (test.PluginPath == curr.PluginPath)
+                    {
+                        comboBox2.SelectedIndex = i;
+                    }
+                }
+            }
         }
+
     }
+
+
 }

@@ -1,0 +1,14 @@
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\MyBase32Coding.deps.json
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\MyBase32Coding.dll
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\MyBase32Coding.pdb
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\CharactersCrud.exe
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\CharactersCrud.pdb
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\CharactersCrud.exe.config
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.csprojAssemblyReference.cache
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.AssemblyInfoInputs.cache
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.AssemblyInfo.cs
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.csproj.CopyComplete
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.dll
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Base32Coding\obj\Debug\netstandard2.0\MyBase32Coding.pdb

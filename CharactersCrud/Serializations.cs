@@ -13,25 +13,23 @@ namespace CharactersCrud
 {
     public class BinarySerialization:ISerializations
     {
-        public void Serialization(string fileName, List<Character> characterList)
+        public byte[] Serialization(List<Character> characterList)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, characterList);
-            }
+            MemoryStream memStream = new MemoryStream();
+            formatter.Serialize(memStream, characterList);
+            byte[] byteResult = memStream.ToArray();
+            return byteResult;
 
         }
 
-        public List<Character> Deserializations(string fileName)
+        public List<Character> Deserializations(byte[] info)
         {
-            List<Character> FileCharacter;
+            List<Character> characterList;
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                FileCharacter = (List<Character>)formatter.Deserialize(fs);
-            }
-            return FileCharacter;
+            MemoryStream memStream = new MemoryStream(info);
+            characterList = (List<Character>)formatter.Deserialize(memStream);
+            return characterList;
 
         }
     }
@@ -40,39 +38,30 @@ namespace CharactersCrud
 
     public class JSONSerialization : ISerializations
     {
-        public void Serialization(string fileName, List<Character> characterList)
+        public byte[] Serialization(List<Character> characterList)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             string Serialized = JsonConvert.SerializeObject(characterList, settings);
-            using (StreamWriter jsfile = File.CreateText(fileName))
-            {
-                jsfile.WriteLine(Serialized);
-            }
-
+            byte[] serializedResult = Encoding.UTF8.GetBytes(Serialized);
+            return serializedResult;
         }
 
 
-        public List<Character> Deserializations(string fileName)
+        public List<Character> Deserializations(byte[] info)
         {
-            string Serialized;
+            string Serialized = Encoding.UTF8.GetString(info);
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            using (StreamReader jsfile = File.OpenText(fileName))
-            {
-                Serialized = jsfile.ReadLine();
-            }
-            List<Character> FileCharacters = JsonConvert.DeserializeObject<List<Character>>(Serialized, settings);
-            return FileCharacters;
-
+            List<Character> characterList = JsonConvert.DeserializeObject<List<Character>>(Serialized, settings);
+            return characterList;
         }
 
     }
 
 
 
-
     public class MySerialization: ISerializations
     {
-        public void Serialization(string fileName, List<Character> characterList)
+        public byte[] Serialization(List<Character> characterList)
         {
             string serializedString = null;
             foreach (Character item in characterList)
@@ -81,17 +70,17 @@ namespace CharactersCrud
                 serializedString += "};";
             }
             serializedString += "$";
-            using (StreamWriter txtfile = File.CreateText(fileName))
-            {
-                txtfile.WriteLine(serializedString);
-            }
+            byte[] serialisedArray = Encoding.UTF8.GetBytes(serializedString);
+            return serialisedArray;
 
         }
 
+        //сериализация отдельного объекта персонажа
         private static void ObjectSerialization(ref string str, object obj)
         {
             Character item = (Character)obj;
             Type type = obj.GetType();
+
             str += obj.GetType().ToString() + "{";
 
             foreach (PropertyInfo param in type.GetProperties())
@@ -107,6 +96,8 @@ namespace CharactersCrud
                 }
             }
         }
+
+        //сериализация класса Armour
         private static void ObjectSerializationArmour(ref string str, object obj)
         {
             Armour item = (Armour)obj;
@@ -115,29 +106,23 @@ namespace CharactersCrud
 
             foreach (PropertyInfo param in type.GetProperties())
             {
-
                     str += param.PropertyType + ":" + param.GetValue(item) + ",";
             }
         }
 
-        public List<Character> Deserializations(string fileName)
+        public List<Character> Deserializations(byte[] serializedArray)
         {
-            string Serialized = null;
-            using (StreamReader file = File.OpenText(fileName))
-            {
-                Serialized = file.ReadLine();
-            }
-            List<Character> Local = new List<Character>();
+            string Serialized = Encoding.UTF8.GetString(serializedArray);
+            List<Character> charactersList = new List<Character>();
             while (Serialized != "$")
             {
-                object temp = Parser(ref Serialized);               
-                Local.Add((Character)temp);
+                object temp = Parser(ref Serialized);
+                charactersList.Add((Character)temp);
             }
-            return Local;
-
-
+            return charactersList;
         }
       
+        //получение типа поля
         private static Type FieldType(ref string str, int ind)
         {
             Type objtype = Type.GetType(str.Substring(0, ind), false, true);
@@ -145,6 +130,7 @@ namespace CharactersCrud
             return objtype;
         }
 
+        //получение значения поля
         private static string GetValue(ref string str)
         {
             int ind = str.IndexOf(',');
@@ -153,6 +139,7 @@ namespace CharactersCrud
             return s;
         }
 
+        //преобразование объекта в 'сериализованную' строку
         private static object Parser(ref string str)
         {
             int indexLeft = str.IndexOf('{');
@@ -193,16 +180,12 @@ namespace CharactersCrud
             {
                 Armour itemChar1 = (Armour)obj;
                 return itemChar1;
-
             }
             else 
             {
                 Character itemChar = (Character)obj;
                 return itemChar;
-
             }
-
         }
-
     }
 }

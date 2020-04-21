@@ -56,3 +56,5 @@ D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\Characters
 D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csproj.CopyComplete
 D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.exe
 D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.pdb
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\CharactersCrud\obj\Debug\Interop.DSOFile.dll
+D:\Ангелина\4 сем\4 сем\ООТПиСП\labs\OOP-project\CharactersCrud\obj\Debug\CharactersCrud.csproj.ResolveComReference.cache

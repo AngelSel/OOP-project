@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharactersCrud", "Character
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializationsTests", "SerializationsTests\SerializationsTests.csproj", "{FF4FEC5E-D610-43DB-BEC8-EEDDB2317877}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPlagins", "MyPlagins\MyPlagins.csproj", "{EE3962AA-0648-45DF-AD10-2C415D61B1A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBase32Coding", "Base32Coding\MyBase32Coding.csproj", "{9A1259F9-0742-410F-86DF-CEB9F36A1712}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{FF4FEC5E-D610-43DB-BEC8-EEDDB2317877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF4FEC5E-D610-43DB-BEC8-EEDDB2317877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF4FEC5E-D610-43DB-BEC8-EEDDB2317877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3962AA-0648-45DF-AD10-2C415D61B1A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3962AA-0648-45DF-AD10-2C415D61B1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3962AA-0648-45DF-AD10-2C415D61B1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3962AA-0648-45DF-AD10-2C415D61B1A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1259F9-0742-410F-86DF-CEB9F36A1712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1259F9-0742-410F-86DF-CEB9F36A1712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1259F9-0742-410F-86DF-CEB9F36A1712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1259F9-0742-410F-86DF-CEB9F36A1712}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,8 @@ namespace SerializationsTests
     {
         [TestMethod]
         public void MySerializationTests()
-        {
+        {   
+            //создание некоторых объектов персонажей 
             List<Character> characterList= new List<Character>();
             List<Character> resultList = new List<Character>();
             Character OutSider = new Summoner(SummCreatures.Kraken,MagicT.Water,MagicA.ArcaneSignet,"Outsider",3100,11,10,Race.Human);
@@ -21,14 +22,14 @@ namespace SerializationsTests
             characterList.Add(OutSider);
             characterList.Add(Bers);
 
+            //создание экземпляра пользовательской сериализации
             ISerializations someSerialization = new MySerialization();
 
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ss.txt");
+            //выполнение сериализации и десериализации
+            byte[] serializedArray = someSerialization.Serialization(characterList);
+            resultList = someSerialization.Deserializations(serializedArray);
 
-            someSerialization.Serialization(path, characterList);
-
-            resultList = someSerialization.Deserializations(path);
-
+            //сравнение полученного и ожидаемого результатов
             for(int i =0;i<characterList.Count;i++)
             {
                 Assert.AreEqual(characterList[i].GetType(), resultList[i].GetType());
